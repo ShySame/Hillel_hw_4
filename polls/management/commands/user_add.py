@@ -1,8 +1,8 @@
 from django.core.management.base import BaseCommand
-from polls.models import PollsUser as Pu
-
 
 from faker import Faker
+
+from polls.models import PollsUser as Pu
 
 
 class Command(BaseCommand):
@@ -15,9 +15,9 @@ class Command(BaseCommand):
             fake = Faker()
             list_pu = []
             for i in range(number):
-                list_pu.append(Pu(username=fake.name(), email=fake.ascii_email(), password=fake.swift()))
+                list_pu.append(Pu(username=fake.name(), email=fake.ascii_email(),
+                                  password=fake.swift()))
             Pu.objects.bulk_create(list_pu)
             self.stdout.write('Successfully created')
         else:
             self.stdout.write("The number must be in the range 1 to 10")
-
