@@ -31,10 +31,10 @@ class Choice(models.Model):
         return self.choice_text
 
 
-class PollsUser(models.Model):
-    username = models.CharField(max_length=200)
-    email = models.CharField(max_length=100)
-    password = models.CharField(max_length=100)
-
-    def __str__(self):
-        return self.username
+# class PollsUser(models.Model):
+#     username = models.CharField(max_length=200)
+#     email = models.CharField(max_length=100)
+#     password = models.CharField(max_length=100)
+#
+#     def __str__(self):
+#         return self.username
