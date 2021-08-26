@@ -1,9 +1,12 @@
+import math
+
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from django.utils import timezone
 from django.views import generic
 
+from .forms import Triangle
 from .models import Choice, Question
 
 
@@ -54,3 +57,20 @@ def vote(request, question_id):
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
         return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
+
+
+def triangle(request):
+    gipot = None
+    if request.method == 'POST':
+        form = Triangle(request.POST)
+        if form.is_valid():
+            katet1 = form.cleaned_data['katet1']
+            katet2 = form.cleaned_data['katet2']
+            gipot = round(math.sqrt(katet1 ** 2 + katet2 ** 2), 2)
+    else:
+        form = Triangle()
+
+    return render(request,
+                  'polls/triangle.html',
+                  {'gipot': gipot,
+                   'form': form})

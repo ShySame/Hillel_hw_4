@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Hypotenuse</title>
+</head>
+<body>
+<h2>КАЛЬКУЛЯТОР ГИПОТЕНУЗЫ</h2>
+{% if gipot %}
+        <p> Гипотенуза равна {{ gipot }} </p>
+    {% else%}
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">ПОСЧИТАТЬ</button>
+</form>
+{% endif %}
+</body>
+</html>
