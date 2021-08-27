@@ -1,13 +1,13 @@
 import math
 
 from django.http import HttpResponseRedirect
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse
 from django.utils import timezone
 from django.views import generic
 
-from .forms import Triangle
-from .models import Choice, Question
+from .forms import Triangle,PersonForm
+from .models import Choice, Person, Question
 
 
 class IndexView(generic.ListView):
@@ -74,3 +74,37 @@ def triangle(request):
                   'polls/triangle.html',
                   {'gipot': gipot,
                    'form': form})
+
+
+def person(request):
+    if request.method == 'POST':
+        form = PersonForm(request.POST)
+        if form.is_valid():
+            o = Person()
+            o.first_name = form.cleaned_data['first_name']
+            o.last_name = form.cleaned_data['last_name']
+            o.email = form.cleaned_data['email']
+            o.save()
+            return redirect('polls:person')
+    else:
+        form = PersonForm()
+
+    return render(request,
+                  'polls/person.html',
+                  {'form': form})
+
+
+def person_update(request, p_id):
+    per_id = get_object_or_404(Person, pk=p_id)
+    if request.method == 'POST':
+        form = PersonForm(request.POST, instance=per_id)
+
+        if form.is_valid():
+            per_id.save()
+            return redirect('polls:person')
+    else:
+        form = PersonForm(instance=per_id)
+
+    return render(request,
+                  'polls/person.html',
+                  {'form': form})

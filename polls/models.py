@@ -2,6 +2,7 @@ import datetime
 
 from django.contrib import admin
 from django.db import models
+from django.forms import ModelForm
 from django.utils import timezone
 
 
@@ -29,3 +30,13 @@ class Choice(models.Model):
 
     def __str__(self):
         return self.choice_text
+
+
+class Person(models.Model):
+    p_id = models.IntegerField(primary_key=True)
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
+    email = models.EmailField()
+
+    def __str__(self):
+        return self.last_name

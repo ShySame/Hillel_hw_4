@@ -1,5 +1,6 @@
 asgiref==3.4.1
 Django==3.2.6
+django-widget-tweaks==1.4.8
 Faker==8.11.0
 flake8==3.9.2
 flake8-builtins==1.5.3
