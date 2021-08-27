@@ -51,6 +51,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'polls.middleware.middleware.LogMiddleware',
 ]
 
 ROOT_URLCONF = 'djangoHW2.urls'

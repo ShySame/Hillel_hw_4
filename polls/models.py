@@ -40,3 +40,13 @@ class Person(models.Model):
 
     def __str__(self):
         return self.last_name
+
+
+class Log(models.Model):
+    p_id = models.IntegerField(primary_key=True)
+    path = models.URLField(max_length=200)
+    method = models.CharField(max_length=7)
+    timestamp = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.path

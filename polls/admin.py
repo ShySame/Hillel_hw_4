@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Choice, Person, Question
+from .models import Choice, Log, Person, Question
 
 
 class ChoiceInline(admin.TabularInline):
@@ -19,6 +19,17 @@ class QuestionAdmin(admin.ModelAdmin):
     list_display = ('question_text', 'pub_date', 'was_published_recently')
 
 
+class PersonAdmin(admin.ModelAdmin):
+    list_filter = ['last_name']
+    list_display = ('first_name', 'last_name', 'email')
+
+
+class LogAdmin(admin.ModelAdmin):
+    list_filter = ['method']
+    list_display = ('path', 'method')
+
+
 admin.site.register(Question, QuestionAdmin)
 admin.site.register(Choice)
-admin.site.register(Person)
+admin.site.register(Person, PersonAdmin)
+admin.site.register(Log, LogAdmin)
