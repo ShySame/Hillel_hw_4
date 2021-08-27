@@ -1,12 +1,12 @@
 import math
 
-from django.http import HttpResponseRedirect, HttpResponseNotFound
-from django.shortcuts import get_object_or_404, render, redirect
+from django.http import HttpResponseRedirect
+from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 from django.utils import timezone
 from django.views import generic
 
-from .forms import Triangle, PersonForm
+from .forms import PersonForm, Triangle
 from .models import Choice, Person, Question
 
 
