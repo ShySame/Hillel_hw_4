@@ -1,3 +1,27 @@
+ДЗ 8. Django model form
+
+Выполнять в текущем проекте или создать новый (не забываем про flake8)
+Создать новую модель с несколькими полями. Создать миграцию и мигрировать.
+
+Person
+first_name - charfield
+last_name - charfield
+email - emailfield
+
+Создать modelform, view, template для - создания новой записи, и для редактирования существующей записи.
+
+/person - GET - получить форму
+/person - POST - отвалидировать и сохранить новый объект Person в базу
+
+/person/<id:int> - GET - получить форму с данными Person, или 404 если пользователя с таким id не существует
+/person/<id:int> - POST - обновить данные Person, или 404
+
+используйте instance= для инициализации формы с данными person
+используйте get_or_404 для того что бы быстро получить Person или вызвать ошибку
+
+https://docs.djangoproject.com/en/3.2/topics/http/shortcuts/#get-object-or-404
+
+
 ДЗ 7. Django forms на базе проекта Django (ДЗ 6)
 
 Добавить вью по пути /triangle
