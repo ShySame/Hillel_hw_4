@@ -11,7 +11,7 @@ class LogMiddleware:
         response = self.get_response(request)
         return response
 
-    def process_view(self, request, view_func,view_args, view_kwargs):
+    def process_view(self, request, view_func, view_args, view_kwargs):
         o = Log()
         o.path = request.path
         if not o.path.startswith('/admin/'):
