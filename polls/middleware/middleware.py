@@ -1,4 +1,5 @@
-import time
+import datetime
+from datetime import datetime
 
 from polls.models import Log
 
@@ -13,4 +14,4 @@ class LogMiddleware:
 
     def process_view(self, request, view_func, view_args, view_kwargs):
         if not request.path.startswith('/admin/'):
-            Log.objects.create(path=request.path, method=request.method, timestamp=int(time.time()))
+            Log.objects.create(path=request.path, method=request.method, timestamp=datetime.now())
