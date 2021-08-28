@@ -21,7 +21,7 @@ class QuestionAdmin(admin.ModelAdmin):
 
 class PersonAdmin(admin.ModelAdmin):
     list_filter = ['last_name']
-    list_display = ('p_id', 'first_name', 'last_name', 'email')
+    list_display = ('id', 'first_name', 'last_name', 'email')
 
 
 class LogAdmin(admin.ModelAdmin):
