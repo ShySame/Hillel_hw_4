@@ -42,7 +42,6 @@ class Person(models.Model):
 
 
 class Log(models.Model):
-    p_id = models.IntegerField(primary_key=True)
     path = models.URLField(max_length=200)
     method = models.CharField(max_length=7)
     timestamp = models.IntegerField()

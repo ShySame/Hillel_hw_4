@@ -12,10 +12,5 @@ class LogMiddleware:
         return response
 
     def process_view(self, request, view_func, view_args, view_kwargs):
-
         if not request.path.startswith('/admin/'):
-            o = Log()
-            o.path = request.path
-            o.method = request.method
-            o.timestamp = int(time.time())
-            o.save()
+            Log.objects.create(path=request.path, method=request.method, timestamp=int(time.time()))

@@ -16,17 +16,17 @@ class QuestionAdmin(admin.ModelAdmin):
     inlines = [ChoiceInline]
     list_filter = ['pub_date']
     search_fields = ['question_text']
-    list_display = ('question_text', 'pub_date', 'was_published_recently')
+    list_display = ('id', 'question_text', 'pub_date', 'was_published_recently')
 
 
 class PersonAdmin(admin.ModelAdmin):
     list_filter = ['last_name']
-    list_display = ('first_name', 'last_name', 'email')
+    list_display = ('p_id', 'first_name', 'last_name', 'email')
 
 
 class LogAdmin(admin.ModelAdmin):
     list_filter = ['method']
-    list_display = ('path', 'method')
+    list_display = ('id', 'path', 'method')
 
 
 admin.site.register(Question, QuestionAdmin)
