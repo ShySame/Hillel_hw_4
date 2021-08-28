@@ -85,7 +85,7 @@ def person(request):
             o.last_name = form.cleaned_data['last_name']
             o.email = form.cleaned_data['email']
             o.save()
-            return redirect('polls:person')
+            return redirect(reverse('person'))
     else:
         form = PersonForm()
 
@@ -101,7 +101,7 @@ def person_update(request, p_id):
 
         if form.is_valid():
             per_id.save()
-            return redirect('polls:person')
+            return redirect(reverse('person'))
 
     else:
         form = PersonForm(instance=per_id)
