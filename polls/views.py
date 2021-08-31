@@ -81,7 +81,7 @@ def person(request):
         form = PersonForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect(reverse('polls:person'))
+            return redirect('person')
     else:
         form = PersonForm()
 
@@ -90,14 +90,14 @@ def person(request):
                   {'form': form})
 
 
-def person_update(request, p_id):
-    per_id = get_object_or_404(Person, pk=p_id)
+def person_update(request, pk):
+    per_id = get_object_or_404(Person, pk=pk)
     if request.method == 'POST':
         form = PersonForm(request.POST, instance=per_id)
 
         if form.is_valid():
             per_id.save()
-            return redirect(reverse('polls:person'))
+            return redirect('person_update', pk=pk)
 
     else:
         form = PersonForm(instance=per_id)

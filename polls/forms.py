@@ -20,5 +20,3 @@ class PersonForm(forms.ModelForm):
         widgets = {'first_name': forms.TextInput(attrs={'placeholder': 'First name'}),
                    'last_name': forms.TextInput(attrs={'placeholder': 'Last name'}),
                    'email': forms.EmailInput(attrs={'placeholder': 'Email address'}), }
-
-
